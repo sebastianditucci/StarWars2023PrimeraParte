@@ -1,0 +1,19 @@
+import personas.*
+
+describe "perla" {
+	const perla = new Atleta(edad = 28)
+	method initialize() {
+		perla.tecnicasConocidas(4)
+		perla.masaMuscular(6)
+		perla.entrenar(15)
+		perla.aprenderUnaTecnica()
+	}
+	test "perla despues de entrenar 15 dias y aprender una tecnica" {
+		assert.equals(65, perla.potencia())
+		assert.notThat(perla.esDestacada())
+	}
+	test "perla despues de aprender una tecnica adicional" {
+		perla.aprenderUnaTecnica()
+		assert.that(perla.esDestacada())
+	}
+}

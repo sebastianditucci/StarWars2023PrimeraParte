@@ -1,0 +1,50 @@
+import personas.*
+import planetas.*
+
+describe "test escenario basico" {
+	const julieta = new Persona(edad = 42)
+	const ana = new Atleta(edad = 25)
+	const rosa = new Atleta(edad = 45)
+	const perla = new Atleta(edad = 28)
+	const monica = new Docente(edad = 45)
+	const luisa = new Docente(edad = 35)
+	const triton = new Planeta()
+	method initialize() {
+		rosa.tecnicasConocidas(8)
+		perla.tecnicasConocidas(4)
+		perla.masaMuscular(6)
+		monica.cursosDados(6)
+		luisa.cursosDados(1)
+		triton.aniadirHabitante(julieta)
+		triton.aniadirHabitante(ana)
+		triton.aniadirHabitante(rosa)
+		triton.aniadirHabitante(perla)
+		triton.aniadirHabitante(monica)
+		triton.aniadirHabitante(luisa)
+	}
+	test "potencia de julieta" { assert.equals(20, julieta.potencia()) }
+	test "inteligencia de julieta" { assert.equals(8, julieta.inteligencia()) }
+	test "julieta no es destacada" { assert.notThat(julieta.esDestacada()) }
+	test "potencia de ana" { assert.equals(28, ana.potencia()) }
+	test "inteligencia de ana" { assert.equals(12, ana.inteligencia()) }
+	test "ana es destacada" { assert.that(ana.esDestacada()) }
+	test "potencia de rosa" { assert.equals(52, rosa.potencia()) }
+	test "inteligencia de rosa" { assert.equals(8, rosa.inteligencia()) }
+	test "rosa es destacada" { assert.that(rosa.esDestacada()) }
+	test "potencia de perla" { assert.equals(44, perla.potencia()) }
+	test "inteligencia de perla" { assert.equals(12, perla.inteligencia()) }
+	test "perla es destacada" { assert.notThat(perla.esDestacada()) }
+	test "potencia de monica" { assert.equals(20, monica.potencia()) }
+	test "inteligencia de monica" { assert.equals(20, monica.inteligencia()) }
+	test "monica es destacada" { assert.that(monica.esDestacada()) }
+	test "potencia de luisa" { assert.equals(20, luisa.potencia()) }
+	test "inteligencia de luisa" { assert.equals(14, luisa.inteligencia()) }
+	test "luisa es destacada" { assert.notThat(luisa.esDestacada()) }
+	test "delegacion diplomatica de triton" { assert.equals(#{ana, rosa, monica}, triton.delegacionDiplomatica()) } 
+	test "valor inicial de defensa" { assert.equals(2, triton.valorInicialDeDefensa()) }
+	test "triton no es culto" { assert.notThat(triton.esCulto()) }
+	test "potencia real de triton" { assert.equals(184, triton.potenciaReal()) }
+} 
+
+
+
